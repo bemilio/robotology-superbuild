@@ -8,6 +8,8 @@ include(FindOrBuildPackage)
 find_package(ACE QUIET)
 find_package(SQLite QUIET)
 find_package(Eigen3 QUIET)
+
+find_or_build_package(YCM QUIET)
 find_or_build_package(RTF QUIET)
 
 if(ROBOTOLOGY_USES_PYTHON)

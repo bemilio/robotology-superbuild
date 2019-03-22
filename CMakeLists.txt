@@ -21,10 +21,13 @@ endif("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
+if (CMAKE_VERSION VERSION_LESS 3.11)
+  list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmake-3.11)
+endif()
+
+
 include(CTest)
 include(FeatureSummary)
-
-set(YCM_USE_CMAKE_PROPOSED TRUE CACHE BOOL "Use files including unmerged cmake patches")
 
 # Compilation options
 
@@ -98,18 +101,15 @@ endif()
 
 
 # Bootstrap YCM
-set(YCM_FOLDER robotology)
-set(YCM_COMPONENT core)
-set(YCM_TAG v0.9.0)
-# Workaround disabling hash warning until we fix https://github.com/robotology/codyco-superbuild/issues/162
-set(YCM_SKIP_HASH_CHECK TRUE)
-include(YCMBootstrap)
+set(YCM_BOOTSTRAP_URL https://github.com/robotology/robotology-superbuild/files/2996703/ycm-0.9.99.zip)
+include(YCMFetchContentBootstrap)
 
 include(FindOrBuildPackage)
 include(YCMEPHelper)
 
 # Core
 if(ROBOTOLOGY_ENABLE_CORE)
+  find_or_build_package(YCM)
   find_or_build_package(RTF)
   find_or_build_package(YARP)
   find_or_build_package(ICUB)
