@@ -48,5 +48,5 @@ ycm_ep_helper(YARP TYPE GIT
                               -DYARP_COMPILE_RTF_ADDONS:BOOL=ON
                               -DYARP_COMPILE_BINDINGS:BOOL=${YARP_COMPILE_BINDINGS}
                               -DYARP_USE_I2C:BOOL=${ROBOTOLOGY_ENABLE_ICUB_HEAD}
-                              -DYARP_USE_SDL:BOOL=ON
+                              -DYARP_USE_SDL:BOOL=OFF
                               -DCREATE_PYTHON:BOOL=${ROBOTOLOGY_USES_PYTHON})
